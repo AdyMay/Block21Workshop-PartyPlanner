@@ -7,11 +7,11 @@ const partyLocation = document.querySelector("#party-location");
 
 async function getEvents() {
   try {
-    // start the request with fetch and store result in a var called res
+    // request w/ fetch / store result in a var called res
     const res = await fetch(
       "https://fsa-crud-2aa9294fe819.herokuapp.com/api/2109-CPU-RM-WEB-PT/events"
     );
-    // turn the response into an object and store result in a var called json
+    // response into an object / store result in a var called json
     const json = await res.json();
     return json.data;
   } catch (err) {
@@ -23,11 +23,11 @@ function createEventsHTML(events, container) {
   const eventsHTML = events.map((event) => {
     // create a new container element
     const eventContainer = document.createElement("div");
-    // create a new paragraph that will display the event data
+    // event data
     const eventParagraph = document.createElement("p");
     // put the party data in the paragraph
     eventParagraph.innerText = `${event.name} ${event.description} ${event.location} ${event.date}`;
-    // create the delete button
+    // delete button
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "Delete";
     deleteButton.addEventListener("click", async function () {
@@ -56,11 +56,10 @@ function createEventsHTML(events, container) {
 }
 
 /**
- * 1. Add eventlistener to the form
- * 2. In the event handler, we want to get all the data from the inputs and make a POST request to the server
- * 3. We will log the party if successful
- * 4. We want update our UI
- *
+ * eventlistener
+ * eventHandler, POST request to the server
+ * log the party if successful
+ * update our UI
  */
 
 async function createEvent(event) {
